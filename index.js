@@ -30,6 +30,12 @@ dotenv.config()
 app.use(express.json())
 app.use("/images",express.static(path.join(__dirname,"/images")))
 app.use(cors({origin:"*",credentials:true}))
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', 'https://adwego-frontend.vercel.app');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    next();
+  });
 app.use(cookieParser())
 app.use("/api/auth",authRoute)
 app.use("/api/users",userRoute)
