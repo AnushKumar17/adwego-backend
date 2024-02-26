@@ -29,7 +29,8 @@ const connectDB=async()=>{
 dotenv.config()
 app.use(express.json())
 app.use("/images",express.static(path.join(__dirname,"/images")))
-app.use(cors({origin:"*",credentials:true}))
+app.use(cors());
+// app.use(cors({origin:"*",credentials:true}))
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', 'https://adwego-frontend.vercel.app');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
